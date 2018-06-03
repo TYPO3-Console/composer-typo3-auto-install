@@ -1,0 +1,26 @@
+{
+    "name": "typo3-console/composer-typo3-auto-install",
+    "type": "library",
+    "description" : "Setup TYPO3 on 'composer install'",
+    "license": "GPL-2.0-or-later",
+    "require": {
+        "php": ">=7.0 <7.3",
+        "helhum/typo3-composer-setup": "^0.5.1",
+        "helhum/typo3-console": "^5.4",
+        "typo3/cms-composer-installers": "^1.4.2 || ^2.0"
+    },
+    "suggest": {
+        "helhum/typo3-config-handling": "To be able to add/ amend TYPO3 installation steps",
+        "helhum/dotenv-connector": "To be able to easily expose env vars from a .env file"
+    },
+    "autoload": {
+        "psr-4": {
+            "Typo3Console\\Typo3AutoInstall\\": "src"
+        }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.x-dev"
+        }
+    }
+}
