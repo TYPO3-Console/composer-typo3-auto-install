@@ -64,19 +64,11 @@ class InstallTypo3 implements InstallerScript
         $this->initializeCompatibilityLayer($event);
         $consoleIO = new ConsoleIo($io);
 
-        $additionalInstallStepsFile = null;
-        if (class_exists(RootConfig::class)) {
-            $additionalInstallStepsFile = dirname(RootConfig::getMainConfigFile()) . '/install.settings.yaml';
-            if (!file_exists($additionalInstallStepsFile)) {
-                $additionalInstallStepsFile = null;
-            }
-        }
-
         $setup = new InstallActionDispatcher(
             new ConsoleOutput($consoleIO->getOutput(), $consoleIO->getInput()),
-            CommandDispatcher::createFromComposerRun($event)
+            CommandDispatcher::createFromComposerRun()
         );
-        $setup->dispatch([], [], $additionalInstallStepsFile);
+        $setup->dispatch([]);
 
         $io->writeError('');
         $io->writeError('<info>Your TYPO3 installation is now ready to use.</info>');
