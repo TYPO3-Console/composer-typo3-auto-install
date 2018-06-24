@@ -40,8 +40,8 @@ class InstallTypo3 implements InstallerScript
      */
     private function shouldRun(ScriptEvent $event): bool
     {
-        $typo3IsSetUp = getenv('TYPO3_IS_SET_UP') || file_exists(getenv('TYPO3_PATH_ROOT') . '/typo3conf/LocalConfiguration.php');
-        return !$typo3IsSetUp && $event->getIO()->isInteractive();
+        $typo3IsSetUp = file_exists(getenv('TYPO3_PATH_ROOT') . '/typo3conf/LocalConfiguration.php');
+        return !$typo3IsSetUp && !getenv('TYPO3_IS_SET_UP');
     }
 
     /**
