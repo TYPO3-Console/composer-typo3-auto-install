@@ -4,7 +4,7 @@
     "description" : "Setup TYPO3 on 'composer install'",
     "license": "GPL-2.0-or-later",
     "require": {
-        "php": ">=7.0 <7.3",
+        "php": "^7",
         "helhum/typo3-composer-setup": "^0.5.1",
         "helhum/typo3-console": "^5.4",
         "typo3/cms-composer-installers": "^1.4.2 || ^2.0"

@@ -92,6 +92,7 @@ class InstallTypo3 implements InstallerScript
         $packageMap = $generator->buildPackageMap($composer->getInstallationManager(), $package, $packages);
         $map = $generator->parseAutoloads($packageMap, $package);
         $loader = $generator->createLoader($map);
+        $loader->register();
         Kernel::initializeCompatibilityLayer($loader);
     }
 }
