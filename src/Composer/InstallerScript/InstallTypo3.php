@@ -75,7 +75,7 @@ class InstallTypo3 implements InstallerScript
 
         $localRepository = $event->getComposer()->getRepositoryManager()->getLocalRepository();
         $serverCommandPackage = $localRepository->findPackage('typo3-console/php-server-command', new EmptyConstraint());
-        if ($serverCommandPackage !== null) {
+        if ($serverCommandPackage !== null && !getenv('DDEV_PROJECT')) {
             $io->writeError('');
             $io->writeError(sprintf('<info>Run</info> <comment>%s server:run</comment> <info>in your project root directory, to start the PHP builtin web server.</info>', substr($event->getComposer()->getConfig()->get('bin-dir') . '/typo3cms', strlen(getcwd()) + 1)));
         }
