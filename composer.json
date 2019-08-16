@@ -9,6 +9,9 @@
         "helhum/typo3-console": "^5.4",
         "typo3/cms-composer-installers": "^1.4.2 || ^2.0"
     },
+    "conflict": {
+        "typo3-console/composer-auto-commands": "< 0.3.0"
+    },
     "suggest": {
         "helhum/dotenv-connector": "To be able to easily expose env vars from a .env file"
     },

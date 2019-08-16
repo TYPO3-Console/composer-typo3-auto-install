@@ -31,6 +31,6 @@ class InstallerScripts implements InstallerScriptsRegistration
 {
     public static function register(Event $event, ScriptDispatcher $scriptDispatcher)
     {
-        $scriptDispatcher->addInstallerScript(new InstallTypo3(), 69);
+        $scriptDispatcher->addInstallerScript(new InstallTypo3(), 30);
     }
 }
