@@ -17,4 +17,4 @@ dependencies to perform automated testing, but a TYPO3 setup process is not requ
 It is recommended to add this package as dev dependency, so that it does not interfere
 with build processes for deployment.
 
-`composer require --dev typo3-console/typo3-auto-install`
+`composer require --dev typo3-console/composer-typo3-auto-install`
