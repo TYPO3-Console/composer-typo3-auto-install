@@ -24,8 +24,6 @@ namespace Typo3Console\Typo3AutoInstall\Composer\InstallerScript;
 
 use Composer\Script\Event as ScriptEvent;
 use Composer\Semver\Constraint\EmptyConstraint;
-use Helhum\TYPO3\ConfigHandling\RootConfig;
-use Helhum\Typo3Console\Core\Kernel;
 use Helhum\Typo3Console\Install\Action\InstallActionDispatcher;
 use Typo3Console\Typo3AutoInstall\Composer\ConsoleIo;
 use Helhum\Typo3Console\Mvc\Cli\CommandDispatcher;
@@ -61,7 +59,6 @@ class InstallTypo3 implements InstallerScript
         $io->writeError('');
         $io->writeError('<info>Setting up TYPO3</info>');
 
-        $this->initializeCompatibilityLayer($event);
         $consoleIO = new ConsoleIo($io);
 
         $setup = new InstallActionDispatcher(
@@ -81,18 +78,5 @@ class InstallTypo3 implements InstallerScript
         }
 
         return true;
-    }
-
-    private function initializeCompatibilityLayer(ScriptEvent $event)
-    {
-        $composer = $event->getComposer();
-        $package = $composer->getPackage();
-        $generator = $composer->getAutoloadGenerator();
-        $packages = $composer->getRepositoryManager()->getLocalRepository()->getCanonicalPackages();
-        $packageMap = $generator->buildPackageMap($composer->getInstallationManager(), $package, $packages);
-        $map = $generator->parseAutoloads($packageMap, $package);
-        $loader = $generator->createLoader($map);
-        $loader->register();
-        Kernel::initializeCompatibilityLayer($loader);
     }
 }

@@ -6,8 +6,8 @@
     "require": {
         "php": "^7",
         "helhum/typo3-composer-setup": "^0.5.1",
-        "helhum/typo3-console": "^5.4",
-        "typo3/cms-composer-installers": "^1.4.2 || ^2.0"
+        "helhum/typo3-console": "^6.0",
+        "typo3/cms-composer-installers": "^2.0 || ^3.0"
     },
     "conflict": {
         "typo3-console/composer-auto-commands": "< 0.3.0"
