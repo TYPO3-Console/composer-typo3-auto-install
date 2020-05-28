@@ -23,7 +23,6 @@ namespace Typo3Console\Typo3AutoInstall\Composer\InstallerScript;
  ***************************************************************/
 
 use Composer\Script\Event as ScriptEvent;
-use Composer\Semver\Constraint\EmptyConstraint;
 use Helhum\Typo3Console\Install\Action\InstallActionDispatcher;
 use Typo3Console\Typo3AutoInstall\Composer\ConsoleIo;
 use Helhum\Typo3Console\Mvc\Cli\CommandDispatcher;
@@ -71,7 +70,7 @@ class InstallTypo3 implements InstallerScript
         $io->writeError('<info>Your TYPO3 installation is now ready to use.</info>');
 
         $localRepository = $event->getComposer()->getRepositoryManager()->getLocalRepository();
-        $serverCommandPackage = $localRepository->findPackage('typo3-console/php-server-command', new EmptyConstraint());
+        $serverCommandPackage = $localRepository->findPackage('typo3-console/php-server-command', '*');
         if ($serverCommandPackage !== null && !getenv('DDEV_PROJECT')) {
             $io->writeError('');
             $io->writeError(sprintf('<info>Run</info> <comment>%s server:run</comment> <info>in your project root directory, to start the PHP builtin web server.</info>', substr($event->getComposer()->getConfig()->get('bin-dir') . '/typo3cms', strlen(getcwd()) + 1)));
